@@ -11,7 +11,7 @@ public class Controller {
     Scanner sc = new Scanner(System.in);
 
     //StringBuilder to track step / distance statistics
-    StringBuilder statistics =  new StringBuilder();;
+    StringBuilder statistics =  new StringBuilder();
 
     // Constructor
     Model model;
@@ -65,7 +65,7 @@ public class Controller {
 
         attempt = inputIntValueWithScanner(sc);
 
-        statistics.append("On "+ model.getCounter()+" step your distance to a random value was "+ Math.abs((model.getValue()-attempt))+"\n");
+        statistics.append(view.stepStatistics(model.getCounter(), model.getValue(), attempt));
 
         if (attempt >= model.getRight_border() || attempt <= model.getLeft_border()){
             view.printMessage(view.OUT_OF_BOUNDS);
