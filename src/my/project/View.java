@@ -30,8 +30,19 @@ public class View {
     }
 
     /**
+     * A method to count which distance to a random value was on each step
+     * @param counter is a number of step
+     * @param value is a random number
+     * @param attempt is user's current input
+     * @return
+     */
+    String stepStatistics(int counter, int value, int attempt){
+       return "On "+ counter +" step your distance to a random value was "+ Math.abs((value-attempt))+"\n";
+    }
+
+    /**
      * A method to show user's step statistic
-     * @param counter
+     * @param counter counts each step
      * @return
      */
      String statistics(int counter){
