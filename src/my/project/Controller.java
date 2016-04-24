@@ -7,11 +7,8 @@ import java.util.Scanner;
  * Created by User on 17.03.2016.
  */
 public class Controller {
-    int attempt;
-    Scanner sc = new Scanner(System.in);
 
-    //StringBuilder to track step / distance statistics
-    StringBuilder statistics =  new StringBuilder();
+    Scanner sc = new Scanner(System.in);
 
     // Constructor
     Model model;
@@ -38,7 +35,7 @@ public class Controller {
             step();
         }
         view.printMessage(view.CONGRATS);
-        view.printMessage(statistics.toString());
+        view.printMessage(view.statistics.toString());
         view.printMessage(view.statistics(model.getCounter()));
     }
 
@@ -63,23 +60,23 @@ public class Controller {
     boolean step() {
         model.increaseCounter();
 
-        attempt = inputIntValueWithScanner(sc);
+        model.setAttempt(inputIntValueWithScanner(sc));
 
-        statistics.append(view.stepStatistics(model.getCounter(), model.getValue(), attempt));
+        view.statistics.append(view.stepStatistics(model.getCounter(), model.getValue(), model.getAttempt()));
 
-        if (attempt >= model.getRight_border() || attempt <= model.getLeft_border()){
+        if (model.getAttempt() >= model.getRight_border() || model.getAttempt() <= model.getLeft_border()){
             view.printMessage(view.OUT_OF_BOUNDS);
             view.printMessage(view.ranging(model.getLeft_border(), model.getRight_border()));
             return false;}
 
-        else if (model.isBigger(model.getValue(), attempt)){
+        else if (model.isBigger(model.getValue(), model.getAttempt())){
             view.printMessage(view.NUMBER_BIGGER);
-            model.setLeft_border(attempt);}
+            model.setLeft_border(model.getAttempt());}
 
-        else if (model.equals(model.getValue(), attempt))
+        else if (model.equals(model.getValue(), model.getAttempt()))
             return true;
 
-        else {model.setRight_border(attempt);
+        else {model.setRight_border(model.getAttempt());
         view.printMessage(view.NUMBER_SMALLER);}
         view.printMessage(view.ranging(model.getLeft_border(), model.getRight_border()));
 
