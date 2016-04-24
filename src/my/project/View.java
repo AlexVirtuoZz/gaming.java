@@ -10,14 +10,13 @@ public class View {
             " Ready? Let's go!";
 
     final String WRONG_INPUT = "Sorry, my number is integer. Try once again!";
-
     final String NUMBER_BIGGER = "Oops! Mistake! My number is bigger. Try once again!";
-
     final String NUMBER_SMALLER = "Oops! Mistake! My number is smaller. Try once again!";
-
     final String OUT_OF_BOUNDS = "Sorry, your number is out of range.";
-
     final String CONGRATS = "My congratulations! You've won me!";
+
+    //StringBuilder to track step / distance statistics
+    StringBuilder statistics =  new StringBuilder();
 
     /**
      * A method to let user know his range of numbers

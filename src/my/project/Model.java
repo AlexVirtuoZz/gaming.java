@@ -6,7 +6,11 @@ import java.util.Random;
  * Created by User on 17.03.2016.
  */
 public class Model {
+    //program's random number
     private int value;
+    //user's input number
+    private int attempt;
+
     private Random rand = new Random();
     private final int RAND_MAX = 100;
 
@@ -19,31 +23,40 @@ public class Model {
 
     // The Program logic
 
-     int getValue() {
+    int getValue() {
         return value;
     }
 
-     void setValue(int value) {
+    void setValue(int value) {
         this.value = value;
     }
-     int getLeft_border() {
+
+    int getLeft_border() {
         return left_border;
     }
 
-     void setLeft_border(int left_border) {
+    void setLeft_border(int left_border) {
         this.left_border = left_border;
     }
 
-     int getRight_border() {
+    int getRight_border() {
         return right_border;
     }
 
-     void setRight_border(int right_border) {
+    void setRight_border(int right_border) {
         this.right_border = right_border;
     }
 
     int getCounter(){
         return counter;
+    }
+
+    void setAttempt(int attempt){
+        this.attempt = attempt;
+    }
+
+    int getAttempt(){
+        return attempt;
     }
 
     //Increase counter value
