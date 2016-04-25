@@ -22,10 +22,10 @@ public class View {
      * A method to let user know his range of numbers
      * @param left_border of range
      * @param right_border of range
-     * @return explanation
+     * @return range of borders
      */
      String ranging(int left_border, int right_border) {
-        return "My number is ranging from "+left_border+" to "+right_border;
+        return "My number is ranging from "+left_border+" to "+right_border+" , not including borders";
     }
 
     /**
@@ -33,7 +33,7 @@ public class View {
      * @param counter is a number of step
      * @param value is a random number
      * @param attempt is user's current input
-     * @return
+     * @return  step \ distance statistic
      */
     String stepStatistics(int counter, int value, int attempt){
        return "On "+ counter +" step your distance to a random value was "+ Math.abs((value-attempt))+"\n";
@@ -42,10 +42,10 @@ public class View {
     /**
      * A method to show user's step statistic
      * @param counter counts each step
-     * @return
+     * @return step quantity
      */
      String statistics(int counter){
-        return "You've won me in "+counter+" steps! Nice result!\nLet's try again and beat your own highscore!";
+        return "You've won me in "+counter+" steps! Nice result!\nLet's try again and beat your own highscore !";
     }
 
      void printMessage(String message){

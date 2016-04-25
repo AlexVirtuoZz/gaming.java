@@ -12,14 +12,14 @@ public class Model {
     private int attempt;
 
     private Random rand = new Random();
-    private final int RAND_MAX = 100;
+    private final int RAND_MAX = 10;
 
-    //counter for user's attempt
-    private short counter = 0;
+    //counter for user's attempts
+    private int counter = 0;
 
     //variables to direct user
-    private int left_border = 0;
-    private int right_border = RAND_MAX;
+    private int left_border ;
+    private int right_border ;
 
     // The Program logic
 
@@ -63,8 +63,15 @@ public class Model {
     void increaseCounter(){
         counter++;
     }
+
+    //Constructor
+    public Model(){
+        setLeft_border(0);
+        setRight_border(RAND_MAX);
+    }
+
     /**
-     * in this method generate random integer
+     * this method generate random integer
      * from min to max, including maximum
      * @param min minimum random number
      * @param max maximum random number
@@ -77,33 +84,51 @@ public class Model {
 
     /**
      * in this method generate random integer from 0 to RAND_MAX
-     * @return random int [0;RAND_MAX]
+     * @return random int (0;RAND_MAX)
      */
      int rand() {
-        return rand.nextInt(RAND_MAX+1);
+        return rand.nextInt(RAND_MAX-1)+1;
     }
 
     /**
-     * This method return true is user's guessed a value
+     * This method return true if user's guessed a value
      * @param value is a random number
      * @param attempt is user's attempt to guess
-     * @return
+     * @return equality of values
      */
     boolean equals(int value, int attempt){
-        if (value == attempt)
-            return true;
-        return false;
+        return value == attempt;
     }
 
     /**
      * Checks if user's value is bigger or smaller then a random one
      * @param value is a random number
      * @param attempt is user's attempt to guess
-     * @return
+     * @return difference between values
      */
     boolean isBigger(int value, int attempt){
-        if (value > attempt)
+        return value > attempt;
+    }
+
+    /**
+     * A method describes one player's step
+     * if random number is bigger then user's, we set new bound and repeat a step
+     * If user's number is equal to a random one, user wins
+     * And if it's not, we know that random number is smaller, we set new bound and repeat a step
+     * Counter counts, how many steps has user done
+     * @return equality of user's and random numbers
+     */
+    boolean step(int attempt){
+        increaseCounter();
+
+        if (isBigger(value, attempt)){
+            setLeft_border(attempt);}
+
+        else if (equals(value,attempt)){
             return true;
+        }
+        else {setRight_border(attempt);}
+
         return false;
     }
 

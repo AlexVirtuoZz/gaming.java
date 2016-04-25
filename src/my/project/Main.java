@@ -9,6 +9,7 @@ public class Main {
         Controller controller = new Controller(model, view);
         // Run
         controller.game();
+
     }
 
 }
