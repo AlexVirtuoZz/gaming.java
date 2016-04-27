@@ -1,6 +1,6 @@
 package my.project;
 
-import java.io.BufferedReader;
+
 import java.util.Scanner;
 
 /**
@@ -64,8 +64,8 @@ public class Controller {
 
     //A method to direct user between an input and a random value
     public void directUser(int scValue) {
-        if (model.isBigger(scValue, model.getValue()))  view.printMessage(view.NUMBER_SMALLER);
-        else  view.printMessage(view.NUMBER_BIGGER);
+        if (model.isBigger(model.getValue(), scValue ))  view.printMessage(view.NUMBER_BIGGER);
+        else  view.printMessage(view.NUMBER_SMALLER);
     }
 
 }

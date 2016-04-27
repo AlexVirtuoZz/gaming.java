@@ -25,7 +25,7 @@ public class View {
      * @return range of borders
      */
      String ranging(int left_border, int right_border) {
-        return "My number is ranging from "+left_border+" to "+right_border+" , not including borders";
+        return "My number is ranging from "+left_border+" to "+right_border+" , excluding borders";
     }
 
     /**

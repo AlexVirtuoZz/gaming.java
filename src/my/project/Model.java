@@ -12,7 +12,7 @@ public class Model {
     private int attempt;
 
     private Random rand = new Random();
-    private final int RAND_MAX = 10;
+    private final int RAND_MAX = 100;
 
     //counter for user's attempts
     private int counter = 0;
@@ -121,13 +121,14 @@ public class Model {
     boolean step(int attempt){
         increaseCounter();
 
-        if (isBigger(value, attempt)){
-            setLeft_border(attempt);}
+        if (isBigger(value, attempt) && attempt > left_border)
+            setLeft_border(attempt);
 
-        else if (equals(value,attempt)){
+        else if (equals(value,attempt))
             return true;
-        }
-        else {setRight_border(attempt);}
+
+        else if (attempt < right_border)
+            setRight_border(attempt);
 
         return false;
     }
