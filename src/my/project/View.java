@@ -4,11 +4,10 @@ package my.project;
  * Created by User on 17.03.2016.
  */
 public class View {
-    // Text's constants
+    // Text constants
     final String WELCOME = "Hello, and welcome to gaming Java !\n" +
             "Let's play a game! I will think of a word and you will try to guess it." +
             " Ready? Let's go!";
-
     final String WRONG_INPUT = "Sorry, my number is integer. Try once again!";
     final String NUMBER_BIGGER = "Oops! Mistake! My number is bigger. Try once again!";
     final String NUMBER_SMALLER = "Oops! Mistake! My number is smaller. Try once again!";

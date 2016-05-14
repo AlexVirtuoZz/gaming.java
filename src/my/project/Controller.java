@@ -32,15 +32,13 @@ public class Controller {
         model.setValue(model.rand());
         view.printMessage(view.WELCOME);
         view.printMessage(view.ranging(model.getLeft_border(),model.getRight_border()));
-
-        int scValue = inputIntValueWithScanner(sc);
-        while (!model.step(scValue)){
-            directUser(scValue);
+        int userInput = inputIntValueWithScanner(sc);
+        while (!model.step(userInput)){
+            directUser(userInput);
             view.printMessage(view.ranging(model.getLeft_border(),model.getRight_border()));
-            view.statistics.append(view.stepStatistics(model.getCounter(), model.getValue(), scValue));
-            scValue = inputIntValueWithScanner(sc);
+            view.statistics.append(view.stepStatistics(model.getCounter(), model.getValue(), userInput));
+            userInput = inputIntValueWithScanner(sc);
         }
-
         view.printMessage(view.CONGRATS);
         view.printMessage(view.statistics.toString());
         view.printMessage(view.statistics(model.getCounter()));
@@ -48,18 +46,28 @@ public class Controller {
 
     // The Utility methods
 
-    /**A method to input number with scanner.
-     *  If input is wrong, we point it out and repeat an attempt
-     *  If input muber is out of bounds, we point it out and repeat an attempt
+    /**
+     * A method to input number with scanner.
+     * If input is not an integer, we point it out and repeat an attempt
+     * If input number is out of bounds, we point it out and repeat an attempt
+     * @param sc - user's scanner
+     * @return correct input value
      */
     public int inputIntValueWithScanner(Scanner sc) {
-        while (!sc.hasNextInt() || sc.nextInt() >= model.getRight_border() || sc.nextInt() <= model.getLeft_border()){
-            if (!sc.hasNextInt()) view.printMessage(view.WRONG_INPUT);
-            else {
+        int input = 0;
+        while(true){
+            while (!sc.hasNextInt()){
+                view.printMessage(view.WRONG_INPUT);
+                sc.next();
+            }
+            if ((input = sc.nextInt()) >= model.getRight_border() || input <= model.getLeft_border()) {
                 view.printMessage(view.OUT_OF_BOUNDS);
-                view.printMessage(view.ranging(model.getLeft_border(), model.getRight_border()));}
-            sc.next();}
-        return sc.nextInt();
+                view.printMessage(view.ranging(model.getLeft_border(), model.getRight_border()));
+                continue;
+            }
+            break;
+        }
+        return input;
     }
 
     //A method to direct user between an input and a random value

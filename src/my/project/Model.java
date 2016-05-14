@@ -8,8 +8,6 @@ import java.util.Random;
 public class Model {
     //program's random number
     private int value;
-    //user's input number
-    private int attempt;
 
     private Random rand = new Random();
     private final int RAND_MAX = 100;
@@ -27,7 +25,7 @@ public class Model {
         return value;
     }
 
-    void setValue(int value) {
+    public void setValue(int value) {
         this.value = value;
     }
 
@@ -35,7 +33,7 @@ public class Model {
         return left_border;
     }
 
-    void setLeft_border(int left_border) {
+    public void setLeft_border(int left_border) {
         this.left_border = left_border;
     }
 
@@ -43,20 +41,12 @@ public class Model {
         return right_border;
     }
 
-    void setRight_border(int right_border) {
+    public void setRight_border(int right_border) {
         this.right_border = right_border;
     }
 
     int getCounter(){
         return counter;
-    }
-
-    void setAttempt(int attempt){
-        this.attempt = attempt;
-    }
-
-    int getAttempt(){
-        return attempt;
     }
 
     //Increase counter value
@@ -78,7 +68,7 @@ public class Model {
      * @return random int [min;max]
      */
 
-     int rand(int min, int max) {
+     public int rand(int min, int max) {
         return min+rand.nextInt((max-min)+1);
     }
 
@@ -86,7 +76,7 @@ public class Model {
      * in this method generate random integer from 0 to RAND_MAX
      * @return random int (0;RAND_MAX)
      */
-     int rand() {
+     public int rand() {
         return rand.nextInt(RAND_MAX-1)+1;
     }
 
@@ -96,7 +86,7 @@ public class Model {
      * @param attempt is user's attempt to guess
      * @return equality of values
      */
-    boolean equals(int value, int attempt){
+    public boolean equals(int value, int attempt){
         return value == attempt;
     }
 
@@ -106,7 +96,7 @@ public class Model {
      * @param attempt is user's attempt to guess
      * @return difference between values
      */
-    boolean isBigger(int value, int attempt){
+    public boolean isBigger(int value, int attempt){
         return value > attempt;
     }
 
@@ -118,7 +108,7 @@ public class Model {
      * Counter counts, how many steps has user done
      * @return equality of user's and random numbers
      */
-    boolean step(int attempt){
+    public boolean step(int attempt){
         increaseCounter();
 
         if (isBigger(value, attempt) && attempt > left_border)
@@ -127,7 +117,7 @@ public class Model {
         else if (equals(value,attempt))
             return true;
 
-        else if (attempt < right_border)
+        else //value is smaller then user's attempt
             setRight_border(attempt);
 
         return false;
